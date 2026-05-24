@@ -1,98 +1,173 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from "@expo/vector-icons";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+export default function Index() {
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+    <View>
+      <Text style={styles.header}>Sign In</Text>
+      <Text style={styles.content}> Let's experience the joy of telecare AI. </Text>
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+      <View>
+        <Text style={styles.style}>Email Address</Text>
+        <TextInput style={{
+        marginLeft: 15,
+        borderRadius:20,
+        borderWidth: 1,
+        borderColor:'pink',
+        paddingHorizontal: 15,
+        alignSelf: 'center',
+        backgroundColor:'white',
+        shadowColor : 'red',shadowOffset: {width: 5,height: 5},
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+        elevation: 4,
+        height: 50,
+        width:'90%' 
+        }}
+        placeholder="example1234@gmail.com"
+        />
+      </View>
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
+      <View>
+        <Text style={styles.style}>Password</Text>
+        <TextInput style={{
+        marginLeft: 15,
+        borderRadius:20,
+        borderWidth: 1,
+        borderColor:'pink',
+        paddingHorizontal: 15,
+        alignSelf: 'center',
+        backgroundColor:'white',
+        shadowColor : 'red',shadowOffset: {width: 5,height: 5},
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+        elevation: 4,
+        height: 50,
+        width:'90%',
+        
+        }}
+        placeholder="Enter the Password..."
+        /> 
+        
 
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
+      </View>
 
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+      
+       <Pressable onPress={()=>alert("Button Pressed")}
+       style ={{
+       backgroundColor: "#f8c7e7",
+        width: "90%",
+       height: 55,
+    borderRadius: 30,
+    alignSelf: "center",
+    marginTop: 25,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    elevation: 5,
+     }}
+     >
+    <Text
+    style={{
+      color: "white",
+      fontSize: 17,
+       }}
+       >SIGN UP
+      </Text> 
+      
+      
+       </Pressable>
+<View
+style = {{
+  flexDirection:'row',
+  alignItems:'center',
+  justifyContent:'center',
+  gap: 10
+}}
+>
+       <Pressable onPress={()=>alert("Button Pressed")}
+        style = {{
+        backgroundColor: "white",
+        width: "15%",
+       height: 55,
+    borderRadius: 20,
+    alignSelf: "center",
+    marginTop: 25,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    elevation: 5,
+        }}
+        >
+          <Ionicons name="logo-google" size={24} color="black" />
+       </Pressable>
+       <Pressable onPress={()=>alert("Button Pressed")}
+        style = {{
+        backgroundColor: "white",
+        width: "15%",
+       height: 55,
+    borderRadius: 20,
+    alignSelf: "center",
+    marginTop: 25,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    elevation: 5,
+        }}
+        >
+       <Ionicons name="logo-facebook" size={24} color="black" />
+       </Pressable>
+       <Pressable onPress={()=>alert("Button Pressed")}
+        style = {{
+        backgroundColor:"white",
+        width: "15%",
+       height: 55,
+    borderRadius: 20,
+    alignSelf: "center",
+    marginTop: 25,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    elevation: 5,
+        }}
+        >
+       <Ionicons name="logo-github" size={24} color="black" />
+       </Pressable>
+</View>
+     <Text>
+      Don't have an account?Sign Up.                                                    Forgot your password?
+      
+     </Text>
+
+       
+
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "center",
   },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+  header: {
+    fontSize: 30,
+    fontWeight: "bold",
+    marginBottom: 18,
+    alignItems:'center',
+    justifyContent:'center',
+    textAlign:'center',
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+  content:{
+    textAlign:'center',
+    marginBottom:50
   },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
-  },
+  style:{
+    marginLeft: 10,
+    marginBottom :10,
+    marginTop:20
+  }
+
+  
 });
