@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Linking, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function Index() {
   return (
@@ -53,7 +53,7 @@ export default function Index() {
       </View>
 
       
-       <Pressable onPress={()=>alert("Button Pressed")}
+       <Pressable onPress={()=> alert("sign in successful")}
        style ={{
        backgroundColor: "#f8c7e7",
         width: "90%",
@@ -65,6 +65,9 @@ export default function Index() {
     alignItems: "center",
     flexDirection: "row",
     elevation: 5,
+    shadowColor : 'blue',shadowOffset: {width: 5,height: 5},
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
      }}
      >
     <Text
@@ -72,7 +75,7 @@ export default function Index() {
       color: "white",
       fontSize: 17,
        }}
-       >SIGN UP
+       >SIGN IN
       </Text> 
       
       
@@ -85,7 +88,7 @@ style = {{
   gap: 10
 }}
 >
-       <Pressable onPress={()=>alert("Button Pressed")}
+       <Pressable onPress={()=> Linking.openURL("https://www.google.com")}
         style = {{
         backgroundColor: "white",
         width: "15%",
@@ -97,11 +100,14 @@ style = {{
     alignItems: "center",
     flexDirection: "row",
     elevation: 5,
+    shadowColor : 'blue',shadowOffset: {width: 5,height: 5},
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
         }}
         >
           <Ionicons name="logo-google" size={24} color="black" />
        </Pressable>
-       <Pressable onPress={()=>alert("Button Pressed")}
+       <Pressable onPress={() => Linking.openURL("https://www.facebook.com")}
         style = {{
         backgroundColor: "white",
         width: "15%",
@@ -113,11 +119,14 @@ style = {{
     alignItems: "center",
     flexDirection: "row",
     elevation: 5,
+    shadowColor : 'blue',shadowOffset: {width: 5,height: 5},
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
         }}
         >
        <Ionicons name="logo-facebook" size={24} color="black" />
        </Pressable>
-       <Pressable onPress={()=>alert("Button Pressed")}
+       <Pressable onPress={() => Linking.openURL("https://www.github.com")}
         style = {{
         backgroundColor:"white",
         width: "15%",
@@ -129,18 +138,23 @@ style = {{
     alignItems: "center",
     flexDirection: "row",
     elevation: 5,
+    shadowColor : 'blue',shadowOffset: {width: 5,height: 5},
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
         }}
         >
-       <Ionicons name="logo-github" size={24} color="black" />
+       <Ionicons name="logo-github" size={24} color="black"/>
        </Pressable>
 </View>
-     <Text>
-      Don't have an account?Sign Up.                                                    Forgot your password?
+    <Text style={{marginTop :20,color: "black", textAlign: "center" }}>
+  Don't have an account?  <Pressable onPress={() => alert("Create New Account")}><Text style={{ color: "brown", fontWeight: "bold" ,marginTop:0
+  }}>SIGNUP</Text></Pressable>
+      </Text>
+    <Text style={{marginTop :10, color: "brown", textAlign: "center", fontWeight: "bold" }}>
+  <Pressable onPress={() => alert("Email Address to reset your Password or Phone no.")}><Text style={{ color: "brown", fontWeight: "bold" }}>Forgot your password?</Text></Pressable>
+    </Text>
       
-     </Text>
-
-       
-
+    
     </View>
   );
 }
